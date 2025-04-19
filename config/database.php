@@ -42,25 +42,25 @@ return [
             'prefix'                  => '',
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
         ],
-        'mysql'  => [
-            'driver'         => 'mysql',
-            'url'            => env('DATABASE_URL'), // Recommended for Railway
-            'host'           => env('DB_HOST', env('MYSQLHOST', '127.0.0.1')),
-            'port'           => env('DB_PORT', env('MYSQLPORT', '3306')),
-            'database'       => env('DB_DATABASE', env('MYSQLDATABASE', 'forge')),
-            'username'       => env('DB_USERNAME', env('MYSQLUSER', 'forge')),
-            'password'       => env('DB_PASSWORD', env('MYSQLPASSWORD', '')),
-            'charset'        => 'utf8mb4',
-            'collation'      => 'utf8mb4_unicode_ci',
-            'prefix'         => '',
-            'prefix_indexes' => true,
-            'strict'         => true,
-            'engine'         => null,
-            'options'        => [
-                PDO::MYSQL_ATTR_SSL_CA                 => env('DB_SSL_CA'),
-                PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => false,
-            ],
-        ],
+        'mysql' => [
+    'driver' => 'mysql',
+    'host' => env('MYSQLHOST'), // Force using Railway's host
+    'port' => env('MYSQLPORT'),
+    'database' => env('MYSQLDATABASE'),
+    'username' => env('MYSQLUSER'),
+    'password' => env('MYSQLPASSWORD'),
+    'charset' => 'utf8mb4',
+    'collation' => 'utf8mb4_unicode_ci',
+    'prefix' => '',
+    'prefix_indexes' => true,
+    'strict' => true,
+    'engine' => null,
+    'options' => [
+        PDO::MYSQL_ATTR_SSL_CA => env('DB_SSL_CA', '/etc/ssl/cert.pem'),
+        PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => false,
+    ],
+],
+3. Clear Co
 
         // 'mysql' => [
         //     'driver' => 'mysql',
